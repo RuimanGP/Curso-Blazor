@@ -1,0 +1,45 @@
+﻿@page "/todos"
+
+<PageTitle>Mis To Dos</PageTitle>
+
+<h1>Lista de To Dos</h1>
+<table>
+    <thead>
+        <th class="cool-lg-4">Título</th>
+        <th class="cool-lg-4">Contenido</th>
+        <th class="cool-lg-4">Fecha de Entrega</th>
+    </thead>
+    @foreach (var toDo in toDos)
+    {
+        <tr>
+            <td>@toDo.Titulo</td>
+            <td>@toDo.Contenido</td>
+            <td>@toDo.FechaEntrega</td>
+        </tr>
+    }
+</table>
+
+<input placeholder="Añadir Titulo" @bind="nuevoTitulo" />
+<input placeholder="Añadir Contenido" @bind="nuevoContenido" />
+<button @onclick="AddToDo">Añadir To Do</button>
+
+@code {
+    private string? nuevoTitulo;
+    private string? nuevoContenido;
+    private List<ToDoItem> toDos = new();
+
+    private void AddToDo()
+    {
+        if (!string.IsNullOrWhiteSpace(nuevoTitulo))
+        {
+            toDos.Add(new ToDoItem
+                {
+                    Titulo = nuevoTitulo,
+                    Contenido = nuevoContenido,
+                    FechaEntrega = new DateOnly(2023, 02, 02)
+                });
+
+            nuevoTitulo = string.Empty;
+        }
+    }
+}
