@@ -1,0 +1,19 @@
+﻿@using ToDoList.Componentes;
+<div class="card w-25" style="margin-bottom:15px">
+    <div class="card-header" style="font-weight: 600">Titulo</div>
+    <div class="card-body" style="font-style:@Body.Estilo">
+        @Body.Texto
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public string Titulo { get; set; } = "Titulo desde Child";
+    [Parameter]
+    public PanelBody Body { get; set; } = new()
+        {
+            Estilo = "italic",
+            Texto = "Texto desde Child"
+        };
+}
