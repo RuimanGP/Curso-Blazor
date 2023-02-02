@@ -1,0 +1,18 @@
+﻿@page "/bind-theory"
+
+<p>
+    <label>
+        Binding normal en Razor:
+        <input @bind="ValorInput" />
+    </label>
+</p>
+<p>
+    <label>
+        HTML binding:
+        <input value="ValorInput" @onchange="@((ChangeEventArgs __e) => ValorInput = __e?.Value?.ToString())" />
+    </label>
+</p>
+
+@code {
+    private string? ValorInput { get; set; }
+}

@@ -1,0 +1,32 @@
+﻿@page "/event-handler"
+
+<h1>@tituloActual</h1>
+
+<p>
+    <label>
+        Nuevo título:
+        <input @bind="nuevoTitulo" />
+    </label>
+    <button @onclick="ActualizarTitulo">
+        Actualizar Título
+    </button>
+</p>
+<p>
+    <label>
+        <input type="checkbox" @onchange="RevisarSiMarcado"/>
+        @mensajeMarcado
+    </label>
+</p>
+@code {
+    private string tituloActual = "Encabezado inicial por defecto";
+    private string? nuevoTitulo;
+    private string mensajeMarcado = "No marcado todavía";
+    private void ActualizarTitulo()
+    {
+        tituloActual = nuevoTitulo;
+    }
+    private void RevisarSiMarcado()
+    {
+        mensajeMarcado = $"Editado por última vez en {DateTime.Now.ToString()}";
+    }
+}

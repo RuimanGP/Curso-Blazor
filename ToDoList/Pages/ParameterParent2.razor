@@ -1,0 +1,25 @@
+﻿@page "/parameter-parent-2"
+
+<ParameterChild Titulo="@titulo"/>
+<ParameterChild Titulo="@GetTitulo()"/>
+<ParameterChild Titulo="@GetTitulo2()" />
+<ParameterChild Titulo="@DateTime.Now.ToLongDateString()"/>
+<ParameterChild Titulo="@PanelData.Title"/>
+
+@code{
+    private string titulo = "Desde Parameter Parent 2";
+
+    private string GetTitulo()
+    {
+        return "Desde GetTitulo() Parent 2";
+    }
+    private string GetTitulo2()
+    {
+        return $"Desde GetTitulo2() {titulo}";
+    }
+    private class PanelData
+    {
+        public static string Title { get; set; } = "Desde la Clase PanelData en Parent 2";
+    }
+    
+}
