@@ -1,0 +1,21 @@
+﻿@page "/ejemplo-form"
+@using Microsoft.Extensions.Logging
+@using ToDoList.wwwroot.Forms;
+@inject ILogger<ModeloEjemplo> Logger
+
+<EditForm Model=@modeloEjemplo OnValidSubmit=@HandleValidSubmit>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="modeloEjemplo.Nombre"/>
+    <button type="submit">Enviar</button>
+</EditForm>
+
+@code{
+    private ModeloEjemplo modeloEjemplo = new();
+    private void HandleValidSubmit()
+    {
+        Logger.LogInformation("HandleValidSubmit ejecutado");        
+        //Procesamiento de formulario
+    }
+}
